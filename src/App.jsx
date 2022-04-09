@@ -1,7 +1,8 @@
 import React from "react";
+import UserRegister from "./pages/UserRegister";
 
 const App = () => {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return <UserRegister />;
 };
 
 export default App;
