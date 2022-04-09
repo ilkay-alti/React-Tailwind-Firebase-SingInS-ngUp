@@ -19,10 +19,10 @@ const UserRegister = () => {
       </div>
       <div className="w-full md:w-[50%] lg:w-[40%] bg-white flex flex-col justify-between ">
         <div className="w-[307px] m-auto">
-          <div className="md:text-4xl lg:text-5xl mb-[3px] font-extrabold">
+          <div className="text-4xl lg:text-5xl mb-[3px] font-extrabold">
             Hello !
           </div>
-          <div className="md:text-xs lg:text-sm text-current mb-[40px] ">
+          <div className="text-xs lg:text-sm text-current mb-[40px] ">
             Sign Up to Get Started
           </div>
 
