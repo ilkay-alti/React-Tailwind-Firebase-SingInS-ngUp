@@ -29,17 +29,17 @@ const UserRegister = () => {
           <input
             className="w-[307px] h-[57px]  my-[16px] border-4 border-[#EEE] focus:border-[#0575E6] focus:outline-none focus:shadow-outline rounded-full px-4 "
             type="text"
-            placeholder="First Name"
-          />
-          <input
-            className="w-[307px] h-[57px]  my-[16px] border-4 border-[#EEE] focus:border-[#0575E6] focus:outline-none focus:shadow-outline rounded-full px-4 "
-            type="text"
-            placeholder="Last Name"
+            placeholder="Full Name"
           />
           <input
             className="w-[307px] h-[57px]  my-[16px] border-4 border-[#EEE] focus:border-[#0575E6] focus:outline-none focus:shadow-outline rounded-full px-4 "
             type="email"
-            placeholder="Email"
+            placeholder="Email Address"
+          />
+          <input
+            className="w-[307px] h-[57px]  my-[16px] border-4 border-[#EEE] focus:border-[#0575E6] focus:outline-none focus:shadow-outline rounded-full px-4 "
+            type="password"
+            placeholder="Password"
           />
 
           <button className="w-[307px] h-[57px] rounded-full text-white bg-[#0575E6]">

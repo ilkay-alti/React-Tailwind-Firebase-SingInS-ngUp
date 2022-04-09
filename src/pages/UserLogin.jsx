@@ -33,7 +33,7 @@ const UserLogin = () => {
           />
           <input
             className="w-[307px] h-[57px]  my-[16px] border-4 border-[#EEE] focus:border-[#0575E6] focus:outline-none focus:shadow-outline rounded-full px-4 "
-            type="text"
+            type="password"
             placeholder="Password"
           />
 
