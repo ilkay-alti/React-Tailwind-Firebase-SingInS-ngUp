@@ -11,6 +11,7 @@ const UserRegister = () => {
   const name = useSelector((state) => state.auth.name);
   const email = useSelector((state) => state.auth.email);
   const password = useSelector((state) => state.auth.password);
+  const err = useSelector((state) => state.auth.error);
 
   const dispatch = useDispatch();
   const handleNameChange = (e) => {
@@ -50,6 +51,7 @@ const UserRegister = () => {
           <div className="text-xs lg:text-sm text-current mb-[40px] ">
             Sign Up to Get Started
           </div>
+          {err && <div className="text-red-500">{err}</div>}
 
           <input
             className="w-[307px] h-[57px]  my-[16px] border-4 border-[#EEE] focus:border-[#0575E6] focus:outline-none focus:shadow-outline rounded-full px-4 "

@@ -7,6 +7,7 @@ const UserLogin = () => {
   const name = useSelector((state) => state.auth.name);
   const email = useSelector((state) => state.auth.email);
   const password = useSelector((state) => state.auth.password);
+  const err = useSelector((state) => state.auth.error);
 
   const dispatch = useDispatch();
 
@@ -44,6 +45,7 @@ const UserLogin = () => {
           <div className="text-sm lg:text-xs text-current mb-[40px] ">
             Welcome Back
           </div>
+          {err && <div className="text-red-500">{err}</div>}
 
           <input
             className="w-[307px] h-[57px]  my-[16px] border-4 border-[#EEE] focus:border-[#0575E6] focus:outline-none focus:shadow-outline rounded-full px-4 "
@@ -60,7 +62,10 @@ const UserLogin = () => {
             value={password}
           />
 
-          <button onClick={handleSubmit} className="w-[307px] h-[57px] rounded-full text-white bg-[#0575E6]">
+          <button
+            onClick={handleSubmit}
+            className="w-[307px] h-[57px] rounded-full text-white bg-[#0575E6]"
+          >
             Login
           </button>
         </div>

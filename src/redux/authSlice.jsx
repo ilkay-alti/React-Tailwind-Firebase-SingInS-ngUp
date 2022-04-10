@@ -1,4 +1,8 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createAsyncThunk,
+  isRejectedWithValue,
+} from "@reduxjs/toolkit";
 import {
   createUserWithEmailAndPassword,
   updateCurrentUser,
@@ -12,20 +16,29 @@ const initialState = {
   name: "",
   email: "",
   password: "",
+  error: null,
 };
 //create Thunk
 
 export const register = createAsyncThunk(
   "auth/register",
-  async ({ name, email, password }) => {
-    await createUserWithEmailAndPassword(auth, email, password);
-    updateCurrentUser(auth, { displayName: name });
+  async ({ name, email, password }, { rejectWithValue }) => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      updateCurrentUser(auth, { displayName: name });
+    } catch (error) {
+      return rejectWithValue(error.code);
+    }
   }
 );
 export const login = createAsyncThunk(
   "auth/login",
-  async ({ email, password }) => {
-    await signInWithEmailAndPassword(auth, email, password);
+  async ({ email, password }, { rejectWithValue }) => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      return rejectWithValue(error.code);
+    }
   }
 );
 
@@ -49,6 +62,15 @@ const authSlice = createSlice({
     changePassword: (state, action) => {
       state.password = action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(register.rejected, (state, action) => {
+        state.error = action.payload;
+      })
+      .addCase(login.rejected, (state, action) => {
+        state.error = action.payload;
+      });
   },
 });
 
