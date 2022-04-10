@@ -1,5 +1,10 @@
 import React from "react";
-import { changeName, changeEmail, changePassword } from "../redux/authSlice";
+import {
+  changeName,
+  changeEmail,
+  changePassword,
+  register,
+} from "../redux/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const UserRegister = () => {
@@ -16,6 +21,10 @@ const UserRegister = () => {
   };
   const handlePasswordChange = (e) => {
     dispatch(changePassword(e.target.value));
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(register({ name, email, password }));
   };
   return (
     <div className="flex h-screen">
@@ -64,7 +73,10 @@ const UserRegister = () => {
             value={password}
           />
 
-          <button className="w-[307px] h-[57px] rounded-full text-white bg-[#0575E6]">
+          <button
+            onClick={handleSubmit}
+            className="w-[307px] h-[57px] rounded-full text-white bg-[#0575E6]"
+          >
             Register
           </button>
         </div>

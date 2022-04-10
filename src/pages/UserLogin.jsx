@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { changeEmail, changePassword } from "../redux/authSlice";
+import { changeEmail, changePassword, login } from "../redux/authSlice";
 
 const UserLogin = () => {
   //read the user from the store
@@ -16,6 +16,10 @@ const UserLogin = () => {
   const handlePasswordChange = (e) => {
     dispatch(changePassword(e.target.value));
   };
+  const handleSubmit = (e) => {
+    dispatch(login({ email, password }));
+  };
+
   return (
     <div className="flex h-screen">
       <div className=" w-0  md:w-[50%] lg:w-[60%] bg-gradient-to-t from-[#021B79] to-[#0575E6] justify-between flex flex-col">
@@ -56,7 +60,7 @@ const UserLogin = () => {
             value={password}
           />
 
-          <button className="w-[307px] h-[57px] rounded-full text-white bg-[#0575E6]">
+          <button onClick={handleSubmit} className="w-[307px] h-[57px] rounded-full text-white bg-[#0575E6]">
             Login
           </button>
         </div>

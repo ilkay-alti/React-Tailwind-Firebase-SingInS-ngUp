@@ -22,12 +22,3 @@ export const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 getAnalytics(app);
 export const auth = getAuth(app);
-
-export const singUp = async (name, email, password) => {
-  await createUserWithEmailAndPassword(auth, email, password);
-  updateCurrentUser(auth, { displayName: name });
-};
-
-export const singIn = async (email, password) => {
-  await signInWithEmailAndPassword(auth, email, password);
-};
