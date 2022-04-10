@@ -1,6 +1,22 @@
 import React from "react";
+import { changeName, changeEmail, changePassword } from "../redux/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const UserRegister = () => {
+  const name = useSelector((state) => state.auth.name);
+  const email = useSelector((state) => state.auth.email);
+  const password = useSelector((state) => state.auth.password);
+
+  const dispatch = useDispatch();
+  const handleNameChange = (e) => {
+    dispatch(changeName(e.target.value));
+  };
+  const handleEmailChange = (e) => {
+    dispatch(changeEmail(e.target.value));
+  };
+  const handlePasswordChange = (e) => {
+    dispatch(changePassword(e.target.value));
+  };
   return (
     <div className="flex h-screen">
       <div className=" w-0  md:w-[50%] lg:w-[60%] bg-gradient-to-t from-[#021B79] to-[#0575E6] justify-between flex flex-col">
@@ -30,16 +46,22 @@ const UserRegister = () => {
             className="w-[307px] h-[57px]  my-[16px] border-4 border-[#EEE] focus:border-[#0575E6] focus:outline-none focus:shadow-outline rounded-full px-4 "
             type="text"
             placeholder="Full Name"
+            onChange={handleNameChange}
+            value={name}
           />
           <input
             className="w-[307px] h-[57px]  my-[16px] border-4 border-[#EEE] focus:border-[#0575E6] focus:outline-none focus:shadow-outline rounded-full px-4 "
             type="email"
             placeholder="Email Address"
+            onChange={handleEmailChange}
+            value={email}
           />
           <input
             className="w-[307px] h-[57px]  my-[16px] border-4 border-[#EEE] focus:border-[#0575E6] focus:outline-none focus:shadow-outline rounded-full px-4 "
             type="password"
             placeholder="Password"
+            onChange={handlePasswordChange}
+            value={password}
           />
 
           <button className="w-[307px] h-[57px] rounded-full text-white bg-[#0575E6]">
