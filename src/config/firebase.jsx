@@ -1,6 +1,6 @@
 //firebase
 
-import { initializeApp } from "firebase";
+import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {
   getAuth,
@@ -9,7 +9,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyCZpcejdunWhUK7fcitwJ3XKOO_-E2u9Mw",
   authDomain: "product-1-ce65d.firebaseapp.com",
   projectId: "product-1-ce65d",
@@ -21,12 +21,13 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 getAnalytics(app);
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 export const singUp = async (name, email, password) => {
   await createUserWithEmailAndPassword(auth, email, password);
   updateCurrentUser(auth, { displayName: name });
 };
+
 export const singIn = async (email, password) => {
   await signInWithEmailAndPassword(auth, email, password);
 };
